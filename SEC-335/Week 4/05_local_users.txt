@@ -1,0 +1,8 @@
+
+User accounts for \\DESKTOP-64LA2VE
+
+-------------------------------------------------------------------------------
+Administrator            champuser                DefaultAccount           
+Guest                    WDAGUtilityAccount       
+The command completed successfully.
+
