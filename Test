@@ -1,0 +1,2 @@
+Get-WinEvent -FilterHashtable @{LogName='Security'; Id=4625} -MaxEvents 5 |
+  % { ($_.Message -split "`n" | sls 'Account Name|Failure Reason|Logon Type') -join ' | ' }
