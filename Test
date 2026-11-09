@@ -7,3 +7,7 @@ secedit /export /cfg $env:TEMP\ur.cfg /areas USER_RIGHTS | Out-Null
 sls 'SeNetworkLogonRight|SeDenyNetworkLogonRight' $env:TEMP\ur.cfg
 
 (Get-PSSessionConfiguration Microsoft.PowerShell).Permission
+
+Get-ItemPropertyValue HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System TypeOfAdminApprovalMode   # expect 2
+Set-ItemProperty HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System TypeOfAdminApprovalMode 1
+Restart-Computer
