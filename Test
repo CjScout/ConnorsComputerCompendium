@@ -1,2 +1,9 @@
 Get-WinEvent -FilterHashtable @{LogName='Security'; Id=4625} -MaxEvents 5 |
   % { ($_.Message -split "`n" | sls 'Account Name|Failure Reason|Logon Type') -join ' | ' }
+
+Get-WinEvent -FilterHashtable @{LogName='Security'; Id=4625} -MaxEvents 1 | fl TimeCreated, Message
+
+secedit /export /cfg $env:TEMP\ur.cfg /areas USER_RIGHTS | Out-Null
+sls 'SeNetworkLogonRight|SeDenyNetworkLogonRight' $env:TEMP\ur.cfg
+
+(Get-PSSessionConfiguration Microsoft.PowerShell).Permission
